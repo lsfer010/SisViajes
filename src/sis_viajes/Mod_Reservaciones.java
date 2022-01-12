@@ -1694,26 +1694,13 @@ public class Mod_Reservaciones extends javax.swing.JFrame {
     
     private boolean comprobarPrecio(String precio){
         boolean precio_correcto = true;
-        for(int i=0; i<precio.length(); i++) {
-            char letra = precio.charAt(i);
-            if(!(letra == '0' || letra == '1' || letra == '2' || letra == '3' || letra == '4' || letra == '5' ||
-                 letra == '6' || letra == '7' || letra == '8' || letra == '9' || letra == '.')) {
-                precio_correcto = false;
-            }
-        }
         
-        int puntos=0;
-        
-        for(int i=0; i<precio.length(); i++) {
-           char letra = precio.charAt(i);
-            if(letra == '.') {
-                puntos++;
-            } 
-        }
-        
-        if(puntos!=0 || puntos!=1){
-            precio_correcto = false;
-        }
+        try {
+           Float.parseFloat(precio);
+           precio_correcto = true;
+        } catch (NumberFormatException nfe) {
+           precio_correcto = false;
+        } 
         
         return precio_correcto;
     }

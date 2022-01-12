@@ -1,2 +1,0 @@
-sis_viajes.CustomTableModel
-sis_viajes.Mod_Clientes
